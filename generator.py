@@ -121,6 +121,8 @@ class Generator:
                 "replace shoes with " + output
             )
 
+            prompt = ( "replace shoes with brown leather dress shoes" )
+
 
             with open(person_image_path, "rb") as image_file:
                 init_image = base64.b64encode(image_file.read()).decode('utf8')
