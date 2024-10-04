@@ -93,17 +93,19 @@ class Generator:
                 "anthropic_version": "bedrock-2023-05-31"
             }
 
-            print(payload)
+        
 
             response = self.bedrock_runtime_client.invoke_model(
                 modelId=self.model_id,
                 contentType="application/json",
                 body=json.dumps(payload)
             )
+            
 
             output_binary = response["body"].read()
             output_json = json.loads(output_binary)
             output = output_json["content"][0]["text"]
+            print(output)
 
             return output
 
