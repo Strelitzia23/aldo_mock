@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 #    return img.resize((384, 384))
 
 # Load the image
-def resize(image):
-
+def resize(img):
+    image = cv2.imdecode(img)
 # Get the original dimensions
     original_height, original_width = image.shape[:2]
 # Calculate new dimensions
