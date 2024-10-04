@@ -112,22 +112,37 @@ class Generator:
     def generate_image(self, output, person_image_path="person.jpg"):
         try:
             prompt = (
-                """From the description of the shoes below, 
-                edit this picture so the person wears it.
-                "PLEASE DO NOT CHANGE THE PERSON'S FACE!!!
-                Make sure the color matches the description: """ + output
+                "replace shoes with " + output
             )
 
 
             with open(person_image_path, "rb") as image_file:
                 init_image = base64.b64encode(image_file.read()).decode('utf8')
 
-            body = json.dumps({
-                "text_prompts": [{"text": prompt}],
-                "init_image": init_image
-            })
+            body=json.dumps({
+                "imageVariationParams": {
+                "images": [ init_image ],
+                "text": prompt,
+                "similarityStrength": 0.7 },
+                "taskType": "IMAGE_VARIATION",
+                "imageGenerationConfig":
+                    {"cfgScale":8,
+                     "seed":0,
+                     "width":1024,
+                     "height":1024,
+                     "numberOfImages":1
+                    }
+                })
+            
+            second_payload = {
+             "modelId": "amazon.titan-image-generator-v2:0",
+             "contentType": "application/json",
+             "accept": "application/json",
+             "body": body
+            }
 
-            model_id = "stability.stable-diffusion-xl-v1"
+            model_id = "amazon.titan-image-generator-v2:0"
+
 
             response = self.bedrock_runtime_client.invoke_model(
                 modelId=model_id,
