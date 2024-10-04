@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 def resize(image):
     img = Image.open(image)
-    return img.resize((1024, 1024))
+    img.save('resized_image.jpg', format='JPEG')
+    return img
 
 # Load the image
 
