@@ -11,7 +11,9 @@ import matplotlib.pyplot as plt
 
 # Load the image
 def resize(img):
-    image = Image.open(img)
+    
+    image = cv2.imread(img)
+
 # Get the original dimensions
     original_height, original_width = image.shape[:2]
 # Calculate new dimensions
