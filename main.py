@@ -19,7 +19,7 @@ def main():
             file.write(person_image.getbuffer())
 
     if shoes_image and person_image:
-        st.image(shoes_image, caption='ALDO Shoes', use_column_width=True)
+        st.image(shoes_image, caption='ALDO Shoes \nProduct 5: 56432 Noicien-w', use_column_width=True)
         st.image(person_image, caption='Captured Person Image', use_column_width=True)
 
         resized_image = resize('input_pic.jpg') ###edition here
