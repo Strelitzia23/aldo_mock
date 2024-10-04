@@ -155,18 +155,15 @@ class Generator:
             )
 
             response_body = json.loads(response.get("body").read())
-            print(response_body.get('result', 'No result found in response'))
+           # print(response_body.get('result', 'No result found in response'))
 
-            artifacts = response_body.get("artifacts")
-            if artifacts and len(artifacts) > 0:
-                base64_image = artifacts[0].get("base64")
-                base64_bytes = base64_image.encode('ascii')
-                image_bytes = base64.b64decode(base64_bytes)
+            #base64_image = response_body.get("artifacts")[0].get("base64")
+            base64_image = response_body['images'][0]
+            base64_bytes = base64_image.encode('ascii')
+            image_bytes = base64.b64decode(base64_bytes)
 
-                with open("result.jpg", "wb") as binary_file:
-                    binary_file.write(image_bytes)
-            else:
-                print("No artifacts found in response.")
+            with open("result.jpg", "wb") as binary_file:
+                binary_file.write(image_bytes)
 
         except Exception as e:
             print(f"An error occurred in generate_image: {e}")
