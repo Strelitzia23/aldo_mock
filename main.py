@@ -14,8 +14,9 @@ def main():
     person_image = st.camera_input("Take a picture of the person")
 
     #save to a file
-    with open ('input_pic.jpg', 'wb') as file:
-        file.write(person_image.getbuffer())
+    if person_image:
+        with open ('input_pic.jpg', 'wb') as file:
+            file.write(person_image.getbuffer())
 
     if shoes_image and person_image:
         st.image(shoes_image, caption='ALDO Shoes', use_column_width=True)
