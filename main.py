@@ -13,11 +13,15 @@ def main():
 
     person_image = st.camera_input("Take a picture of the person")
 
+    #save to a file
+    with open ('input_pic.jpg', 'wb') as file:
+        file.write(person_image.getbuffer())
+
     if shoes_image and person_image:
         st.image(shoes_image, caption='ALDO Shoes', use_column_width=True)
         st.image(person_image, caption='Captured Person Image', use_column_width=True)
 
-        resized_image = resize(person_image)
+        resized_image = resize('input_pic.jpg') ###edition here
         resized_image.save('resized_image.jpg', format='JPEG')
 
         generator = Generator()
