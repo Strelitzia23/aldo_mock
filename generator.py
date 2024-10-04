@@ -84,7 +84,7 @@ class Generator:
                             },
                             {
                                 "type": "text",
-                                "text": "Describe this garment in a way that I can use your description to edit an image of a person using Stable Diffusion XL. Make sure to insist on the main color and features. Your output will be used as input with the other model so be direct, precise, and imperative."
+                                "text": "In only a few words, describe the shoes on this picture. Include color, material, style. That's it. DO NOT USE ANY PUNCTUATION LIKE PERIODS OR COMMAS"
                             }
                         ]
                     }
