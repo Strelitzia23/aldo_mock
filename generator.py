@@ -93,6 +93,8 @@ class Generator:
                 "anthropic_version": "bedrock-2023-05-31"
             }
 
+            print(payload)
+
             response = self.bedrock_runtime_client.invoke_model(
                 modelId=self.model_id,
                 contentType="application/json",
