@@ -23,7 +23,8 @@ def main():
         st.image(person_image, caption='Captured Person Image', use_column_width=True)
 
         resized_image = resize('input_pic.jpg') ###edition here
-        resized_image.save('resized_image.jpg', format='JPEG')
+        
+        #resized_image.save('resized_image.jpg', format='JPEG')
 
         generator = Generator()
         description = generator.generate_description(shoes_image)
